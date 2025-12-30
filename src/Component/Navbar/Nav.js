@@ -5,14 +5,16 @@ import { AiOutlineSwap } from 'react-icons/ai';
 import { useHistory } from 'react-router-dom';
 import { CartContext } from '../Home/CartContext';
 import { useSelector } from "react-redux";
+import axios from "axios";
 
 
 const CustomNavbar = () => {
+  const [data, setData] = useState([]);
+  const [value, setvalue] = useState("");
 
   const wishlistItems = useSelector(state => state.wishlist);
   const history = useHistory();
 
-  // add wishlist
   const [dbWishlistCount, setDbWishlistCount] = useState(0);
 
 
@@ -32,6 +34,28 @@ const CustomNavbar = () => {
   }, [wishlistItems]);
 
   // const { cartCount } = useContext(CartContext);
+
+
+  // search
+
+  const handlesearch = () => {
+    if (value.trim()) {
+      axios
+        .get("http://localhost:3000/searchcon?search=" + encodeURIComponent(value))
+        .then((response) => {
+          console.log(response.data.data);
+          setData(response.data.data);
+        })
+        .catch((err) => console.log(err));
+    } else {
+      setData([]); // ✅ clear data
+    }
+  };
+
+
+
+
+
 
   return (
     <Navbar expand="lg" className="py-3">
@@ -57,6 +81,8 @@ const CustomNavbar = () => {
 
 
             <Nav.Link href="#product">Product</Nav.Link>
+
+
             <Nav.Link href="#Blog" onClick={() => history.push("/Blog")}>Blog</Nav.Link>
 
             <NavDropdown title="Page" id="Page-dropdown">
@@ -68,7 +94,7 @@ const CustomNavbar = () => {
 
           {/* Icons Section */}
           <Nav>
-            <Nav.Link href="#search">
+            <Nav.Link href="#search" onClick={handlesearch} id="btn">
               <FaSearch />
             </Nav.Link>
             <Nav.Link href="#account" onClick={() => history.push("/Sign")}>
@@ -92,6 +118,8 @@ const CustomNavbar = () => {
 };
 
 export default CustomNavbar;
+
+
 
 
 

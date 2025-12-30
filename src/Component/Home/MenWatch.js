@@ -28,7 +28,7 @@ const Product = () => {
       })
       .catch((error) => {
         console.error("Fetch Error:", error);
-      }); ``
+      }); 
   };
 
   // Fetch once on mount
