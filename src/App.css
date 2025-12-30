@@ -1,8 +1,9 @@
 *{
-  margin: 0;
-  padding: 0;
+ margin: 0;
+ padding: 0;
   box-sizing: border-box;
    font-family: "Jost";
+
 }
 
 /* =================================================================Navar star================================================================= */
@@ -131,7 +132,7 @@ input {
 
 .link button {
 	margin-top: 50px;
-	background-color: black;
+	background-color:#222222;
 	color:#ffffff;
 	height: 40px;
 	width: 150px;
@@ -193,13 +194,13 @@ input {
   font-size: 1.5rem;
   letter-spacing: 0.15em;
   text-transform: uppercase;
-  color: #f8f9fa;
+  color:#ffffff;
 }
 
 .carousel-caption-custom p {
   font-size: 1.25rem;
   margin-bottom: 1.5rem;
-  color: #ddd;
+  color:#ffffff;
 }
 
 /* Button styling */
